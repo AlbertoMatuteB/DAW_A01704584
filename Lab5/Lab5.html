@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style1.css">
+    <meta charset="utf-8">
+    <title>Laboratorio 5</title>
+</head>
+
+<body>
+
+    <section>
+        <h4>Password Validation</h4>
+        <div class="container">
+            <form>
+                <label for="psw">Password</label>
+                <input type="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+
+                <label for="psw">Confirm Password</label>
+                <input type="password" id="confpsw" name="confpsw" required>
+            </form>
+        </div>
+
+        <div id="message">
+            <h3>Password must contain the following:</h3>
+            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+            <p id="number" class="invalid">A <b>number</b></p>
+            <p id="special" class="invalid">A <b>special character</b></p>
+            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+            <p id="match" class="invalid">Both passwords must <b>match </b></p>
+        </div>
+    </section>
+    <hr>
+
+    <section>
+        <h4>Eshop</h4>
+        <table>
+            <tr>
+                <td>
+                    una chamarra bien perra
+                </td>
+                <td>
+                    $150
+                </td>
+                <td><input type="button" value="-" onclick="carrito(0,0)" /><input type="button" value="+" onclick="carrito(0,1)" /></td>
+                <td>
+                    <a id="cantidad1"></a>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    Ń̶͕̯̳̟͇̹̪̤-̧͍͖̦͎̗̗ẁ̸̱̪̩̺̯o̲̩̤͓͠ͅr͏͇̞̣̮d҉̡͈̯̳̲̀ ̛̰̻̫͇͙̝̙̺P̡͍̹a͓͔̥̗͍̭̼̩s̳̱̦̦̣̯͞s̘̜̯͖͢
+                </td>
+                <td>
+                    $100,000
+                </td>
+                <td><input type="button" value="-" onclick="carrito(1,0)" /><input type="button" value="+" onclick="carrito(1,1)" /></td>
+                <td>
+                    <a id="cantidad2"></a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    unos buenos memingos
+                </td>
+                <td>
+                    $10,000
+                </td>
+                <td><input type="button" value="-" onclick="carrito(2,0)" /><input type="button" value="+" onclick="carrito(2,1)" /></td>
+                <td>
+                    <a id="cantidad3"></a>
+                </td>
+            </tr>
+
+            <tr>
+                <td><input type="button" value="Total(IVA)" onclick="carrito(3,0)" /></td>
+                <td>
+                    <a id="checkout"></a>
+                </td>
+            </tr>
+        </table>
+
+    </section>
+    <hr>
+    <section>
+        <h4>Invertir palabra</h4>
+        <input type="button" value="Invertir" onclick="inverso()" /><input type="text" id="pInv" name="palabraInv" required>
+        <br>
+        <br>
+        <a id="resultadoInv"></a>
+    </section>
+    <script type="text/javascript" src="validador.js"></script>
+    </script>
+
+
+
+</body>
+
+</html>
