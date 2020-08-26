@@ -11,10 +11,18 @@ myInput.onfocus = function() {
     document.getElementById("message").style.display = "block";
 }
 
+//when the user clicks the confirm password field, show the message box
+myMatch.onfocus = function() {
+    document.getElementById("message").style.display = "block";
+}
+
 // When the user clicks outside of the password field, hide the message box
-//myInput.onblur = function() {
-//    document.getElementById("message").style.display = "none";
-//}
+myInput.onblur = function() {
+    document.getElementById("message").style.display = "none";
+}
+myMatch.onblur = function() {
+    document.getElementById("message").style.display = "none";
+}
 
 // When the user starts to type something inside the password field
 myInput.onkeyup = function() {
@@ -67,9 +75,16 @@ myInput.onkeyup = function() {
         length.classList.add("invalid");
     }
 
+
+}
+
+
+// When the user starts to type something inside the confirm password field
+myMatch.onkeyup = function() {
+
     // Validate both passwords match
-    let pair = myInput.value
-    if (document.getElementById("confpsw").value === document.getElementById("psw").value) {
+
+    if (myMatch.value === myInput.value) {
         match.classList.remove("invalid");
         match.classList.add("valid");
     } else {
@@ -77,6 +92,9 @@ myInput.onkeyup = function() {
         match.classList.add("invalid");
     }
 }
+
+
+//Caso tienda virtual
 
 let aItem = 0;
 let bItem = 0;
@@ -87,6 +105,11 @@ let cStr = "";
 let resultado = 0;
 let rStr = "";
 
+//funcion que maneja todos los movimientos de la tienda, ya sea aumentar, reducir, y calcular el costo total
+//item 0: chamarra - $5000
+//item 1: lentes de sol - $2000
+//item 2: cachito del avion - $500
+//item 3: le dice a la funcion que el usuario quiere saber cuanto es el total de su carrito, incluido el iva
 function carrito(item, add) {
     if (item == 0 && add == 0 && aItem > 0) {
         aItem--;
@@ -119,16 +142,52 @@ function carrito(item, add) {
         document.getElementById("cantidad3").innerHTML = "Cantidad: " + cStr;
     }
     if (item == 3 && add == 0) {
-        resultado = (aItem * 150 + bItem * 100000 + cItem * 10000) * 1.16;
+        resultado = (aItem * 5000 + bItem * 2000 + cItem * 500) * 1.16;
         rStr = "" + resultado;
-        document.getElementById("checkout").innerHTML = "Total: " + rStr;
+        document.getElementById("checkout").innerHTML = "Total: " + "$" + rStr;
     }
     return 0;
 }
 
+
+//una funcion que invierte un string, desde una palabra, hasta un bello poema, chequenlo.
+/**
+Dammit I'm mad.
+Evil is a deed as I live.
+God, am I reviled? I rise, my bed on a sun, I melt.
+To be not one man emanating is sad. I piss.
+Alas, it is so late. Who stops to help?
+Man, it is hot. I'm in it. I tell.
+I am not a devil. I level "Mad Dog".
+Ah, say burning is, as a deified gulp,
+In my halo of a mired rum tin.
+I erase many men. Oh, to be man, a sin.
+Is evil in a clam? In a trap?
+No. It is open. On it I was stuck.
+Rats peed on hope. Elsewhere dips a web.
+Be still if I fill its ebb.
+Ew, a spider… eh?
+We sleep. Oh no!
+Deep, stark cuts saw it in one position.
+Part animal, can I live? Sin is a name.
+Both, one… my names are in it.
+Murder? I'm a fool.
+A hymn I plug, deified as a sign in ruby ash,
+A Goddam level I lived at.
+On mail let it in. I'm it.
+Oh, sit in ample hot spots. Oh wet!
+A loss it is alas (sip). I'd assign it a name.
+Name not one bottle minus an ode by me:
+"Sir, I deliver. I'm a dog"
+Evil is a deed as I live.
+Dammit I'm mad.
+ */
 function inverso() {
     let entrada = document.getElementById("pInv").value;
 
+    if (entrada == "") {
+        alert("Escriba algo primero");
+    }
     entrada = entrada + ""; // string("entrada, ej: 12345")
     document.getElementById("resultadoInv").innerHTML = entrada.split("").reverse("").join("");
     //split: divide el string en caracteres ej:[12345] = [1][2][3][4][5]...
