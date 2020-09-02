@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <title>Laboratorio 7</title>
+</head>
+
+<body>
+    <div class="parallax-container">
+        <div class="parallax">
+            <img src="images/background3.jpg" alt="background 1">
+        </div>
+    </div>
+    <section>
+        <div class="black white-text center">
+            <h1>Alberto Matute Beltrán</h1>
+            <h2>A01704584 - Laboratorio 7</h2>
+            <hr>
+            <div class="container">
+                <form>
+                    <label for="docum">Escribe algo sobre ti!</label>
+                    <input type="text" id="docum" name="document" title="no te asustes :)">
+
+                </form>
+            </div>
+            <div id="message">
+                <h3>(Esta informacion no se va a guardar) puedes escribir lo que quieras, era para comprobar que esta informacion que estoy escribiendo apareciera jaja salu2</h3>
+
+            </div>
+        </div>
+    </section>
+    <section>
+        <table>
+            <td>
+                <button class="button">Pasa sobre mi!</button> </td>
+        </table>
+    </section>
+    <div class="parallax-container">
+        <div class="parallax">
+            <img src="images/background2.jpg" alt="background 1">
+        </div>
+    </div>
+    <section>
+        <p>Mira un reloj!</p>
+        <p id="demo"></p>
+    </section>
+    <div class="parallax-container">
+        <div class="parallax">
+            <img src="images/background.jpg" alt="background 1">
+        </div>
+    </div>
+    <section>
+        <br>
+        <p>La idea original era un rompecabezas sencillo pero es mas complicado de lo que parece, disfruta de mover al gato de un lado a otro</p>
+        <table>
+            <tr>
+                <td>
+                    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="drag1" src="puzzle4.jpg" draggable="true" ondragstart="drag(event)" width="350" height="350"></div>
+                </td>
+                <td>
+                    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"> </div>
+                </td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script type="text/javascript" src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.parallax');
+            var instances = M.Parallax.init(elems);
+        });
+    </script>
+    </div>
+</body>
+
+
+</html>

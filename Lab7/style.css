@@ -1,0 +1,38 @@
+img.water_mark {
+    position: absolute;
+    opacity: 0.2;
+    width: 450px;
+    height: 400px;
+    top: 70px;
+    right: 15px;
+}
+
+
+/* The message box is shown when the user clicks on the password field */
+
+#message {
+    display: none;
+    background: #f1f1f1;
+    color: #000;
+    position: relative;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+#message p {
+    padding: 10px 35px;
+    font-size: 18px;
+}
+
+.button:hover {
+    font-style: oblique;
+    font-size: large;
+    font-weight: bold;
+}
+
+#div1 {
+    width: 350px;
+    height: 350px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+}
