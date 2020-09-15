@@ -119,7 +119,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $website = "";
   } else {
     $website = test_input($_POST["website"]);
-    // check if URL address syntax is valid (this regular expression also allows dashes in the URL)
     if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
       $websiteErr = "Invalid URL";
     }
@@ -206,15 +205,22 @@ echo $gender;
 </div>
 
 <div class="container">
-<p>Preguntas</p> 
-
-<p>¿Qué hace la función phpinfo()? Describe y discute 3 datos que llamen tu atención.</p>
-<li><p>La función phpinfo() sirve para mostrar una cierta cantidad de información sobre el estado del PHP, también se puede conocer una representación visual en forma de tabla.</p></li>
-<p>¿Qué cambios tendrías que hacer en la configuración del servidor para que pudiera ser apto en un ambiente de producción?</p>
-<li><p>Los cambios que se realizarían sería instalar una aplicación de enterno con XAMPP ya que con este se puede usar y manejar el servidor.</p></li>
-<p>¿Cómo es que si el código está en un archivo con código html que se despliega del lado del cliente, se ejecuta del lado del servidor? Explica.</p>
-<li><p>Ambos tipos de archibvos se van ejecutando en el servidor, cuando se ejecutan de manera correcta se le envia una respuesta al cliente con lo que se trabajo con HTML y de esa forma se mostrará en la pantalla.</p></li>
-
+<p><strong>¿Por qué es una buena práctica separar el controlador de la vista?</strong></p>
+    <p>Porque ayuda o permite a reutilizar el código y separa ambos lenguajes o componentes.</p>
+    <p><strong>Aparte de los arreglos $_POST y $_GET, ¿qué otros arreglos están predefinidos en php y cuál es su función?
+     </strong>
+    <p>$_SESSION: Continee variables de la sesion actual. </p>
+    <p>$_SERVER: Contiene informacion como direcciones de scripts, y headers.</p>
+    <p>$_FILES: Contiene un arreglo de objetos publicados con $_POST.</p>
+   
+    <strong>Explora las funciones de php, y describe 2 que no hayas visto en otro lenguaje y que llamen tu atención</strong>
+    <p>glob(), el cual busca archivos locales.</p>
+    <p>htmlentities(), la función convierte los caracteres a entidades HTML. </p>
+    <p><strong>¿Qué es XSS y cómo se puede prevenir?</strong></p>
+    <p>
+        Es un ataque el cual se coloca código malicioso para ejecutarlo en el sitio web, aplicaciones locales e incluso al propio navegador.
+        En PHP disponemos de algunas funciones para realizar la prevención de este tipo de ataques XSS: htmlspecialchars(), htmlentities() y strip_tags()
+    </p>
 </div>
 
 <?php include("_footer.html"); ?>
