@@ -30,9 +30,6 @@ where "upload.php" file resides. The uploaded files will be saved there.
 if (file_exists($target_file)) {
     echo "Sorry, file already exists.";
     $uploadOk = 0;
-    $myfile = fopen($target_file, "r") or die("Unable to open file!");
-    echo fread($myfile,filesize($target_file));
-    fclose($myfile);
 }
 
 
@@ -56,13 +53,9 @@ if ($uploadOk == 0) {
   } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
       echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-      $myfile = fopen($target_file, "r") or die("Unable to open file!");
-      echo fread($myfile,filesize($target_file));
-      fclose($myfile);
     } else {
       echo "Sorry, there was an error uploading your file.";
     }
-
 }
 
 ?>
