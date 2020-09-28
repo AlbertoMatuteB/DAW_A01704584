@@ -75,7 +75,7 @@
     
     
         }else{
-            echo '<script>alert("Asegurate de ingresar todos los datos");</script>';
+            echo '<script>alert("Parece que no has llenado bien los datos");</script>';
         }    
         
     }
