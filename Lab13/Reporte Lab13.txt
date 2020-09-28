@@ -1,0 +1,72 @@
+Agrega un nuevo registro a la tabla de materiales:
+  INSERT INTO Materiales values(1000, 'xxx', 1000)
+
+Revisa el contenido de la tabla materiales y determina si existe alguna inconsistencia en el contenido de la tabla. ¿Cuál es? ¿A qué se debe?
+hay una inconsistencia porque la clave "1000" ya esta en uso y no pueden haber 2 Materiales con la misma clave
+
+
+A continuación definiremos a la Clave como llave primaria de la tabla de materiales, esto mediante la creación de un constraint.
+  ALTER TABLE Materiales add constraint llaveMateriales PRIMARY KEY (Clave)
+
+Agrega nuevamente el registro a la tabla de materiales:
+  INSERT INTO Materiales values(1000, 'xxx', 1000)
+
+¿Qué ocurrió?
+No pudo agregar el registro
+
+
+Verifica si la tabla de materiales tiene definido algún constraint (restricción):
+  sp_helpconstraint materiales
+
+¿Qué información muestra esta consulta?
+Muestra la llave primaria que definimos anteriormente (Clave)
+Asegúrate de crear constraints análogos para definir las llaves primarias de las tablas proveedores, y proyectos.
+
+¿Qué sentencias utilizaste para definir las llaves primarias?
+ALTER TABLE Proveedores add constraint llaveProveedores PRIMARY KEY (RFC)
+
+ ALTER TABLE Proyectos add constraint llaveProyectos PRIMARY KEY (Numero)
+
+Define el constraint correspondiente a la llave primaria para la tabla entregan, considerando que en este caso, la llave primaria está integrada por varias columnas.
+
+¿Qué sentencias utilizaste para definir este constrait?
+ ALTER TABLE Entregan add constraint llaveEntregan PRIMARY KEY (Clave, RFC, Numero, Fecha)
+
+
+Intenta insertar en la tabla entregan el siguiente registro:
+  INSERT INTO entregan values (0, 'xxx', 0, '1-jan-02', 0) ;
+
+¿Qué particularidad observas en los valores para clave, rfc y numero?
+Pues la clave es cerp, el RFC solo tiene 3 caracteres y el numero tambien es cero que no deberia
+¿Cómo responde el sistema a la inserción de este registro?
+no hizo nada para evitarlo
+
+
+Ahora agreguemos el siguiente constraint:
+  ALTER TABLE entregan add constraint cfentreganclave
+  foreign key (clave) references materiales(clave);
+
+Intenta nuevamente la inserción del registro inconsistente.
+¿Qué significa el mensaje que emite el sistema?
+que existe una inconsistencia con la llave foranea que agregamos de Materiales (Clave)
+
+
+Efectúa la siguiente sentencia INSERT:
+  INSERT INTO entregan values (1000, 'AAAA800101', 5000, GETDATE(), 0);
+Lista el registro que acabas de crear.
+¿Qué uso se le está dando a GETDATE()?
+Obtiene la fecha y hora actual
+¿Tiene sentido el valor del campo de cantidad?
+no, ya que esta registrando una entrega vacia
+
+Intenta insertar un registro con cantidad igual o menor que 0.
+¿Cómo responde el sistema?
+No me deja
+¿Qué significa el mensaje?
+No me deja porque hay un conflicto con la condicion de cantidad > 0
+
+Integridad Referenciada
+La integridad referencial es propiedad de la base de datos. Esto significa que la clave externa de una tabla referenciada siempre debe hacer referencia a una fila válida en la tabla referenciada. 
+
+https://www.aulaclic.es/sql/b_8_1_1.htm
+
