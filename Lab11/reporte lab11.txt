@@ -1,0 +1,26 @@
+Ejecuta las instrucciones que contiene el archivo crear.sql
+
+¿Qué efecto tuvo esta acción?
+creo las 4 tablas
+
+¿Qué utilidad tiene esta manera de ejecutar los comandos de SQL?
+de esta manera creamos tablas vacias
+
+
+Abre una sesión de FTP y sube los siguientes archivos a tu directorio inicial.
+
+¿Qué relación tienen con las tablas de la base de datos? (checa su contenido)
+son los datos que queremos meter en las tablas
+
+¿Qué relación tiene el contenido de este archivo (materiales.sql) con el formato en que se encuentran los datos en el archivo materiales.csv?
+que los datos en las tablas csv las vamos a insertar en las sql
+
+Ejecuta los comandos definidos en el archivo materiales.sql.
+
+Después de la ejecución del comando, vuelve a revisar el contenido de la tabla materiales mediante el uso de una consulta.
+
+SELECT  * FROM Materiales
+
+
+¿Qué sucedió?
+genero una consulta con los datos de Materiales
