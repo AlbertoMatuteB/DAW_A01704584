@@ -133,12 +133,11 @@
             echo "<tbody>";
             while($row = mysqli_fetch_assoc($result))
             {
-                $name = getNombre($row["id"]);
-                $res = mysqli_fetch_array($name);
+                $res = mysqli_fetch_array($result);
                 echo "<tr>";
                 echo "<td>" . $res['nombre'] . "</td>";
         
-                echo "<td>" . $row["estado"] . "</td>";
+                echo "<td>" . $row["Estado"] . "</td>";
         
                 echo "<td>" . $row["fecha"] . "</td>";
                 echo "</tr>";
