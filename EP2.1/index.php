@@ -40,7 +40,7 @@ require_once 'util.php';
         <div class="row ">
             <div class="col s6">
                 <div class="row ">
-                    <form id="estado Zombies">
+                    <form id="estadoZombie">
                         <div class="row">
                             <h5>Zombies por estado</h5>
                             <div class="input-field col s6">

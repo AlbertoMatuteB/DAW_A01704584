@@ -1,19 +1,14 @@
 <?php 
     require_once ('util.php');
 
-    $name = $_POST["estado"];
-  
-
-    if(isset($_POST["estado"]) && !empty($_POST["estado"] ) ){
+    $estado = $_POST["submit-estado"];
+    
+    if(isset($_POST["submit-estado"]) && !empty($_POST["submit-estado"] ) ){
         
-        $rs = getZombieNum($name);
+        $rs = getZombieNum($estado);
 
         $result = mysqli_fetch_array($rs);
 
-        echo "<p>Zombies con". $result[0] .": ".$result[1]."</p>";
-       
-        
+        echo "<p>Zombies con ". $result['id'] .": ".$result['count']."</p>";
     }
-    
-
 ?>
