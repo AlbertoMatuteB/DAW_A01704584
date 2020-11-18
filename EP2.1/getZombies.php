@@ -13,21 +13,20 @@
             echo "<thead>";
             echo "<tr>";
             echo "<th> Nombre </th>";
-            echo "<th> estado </th>";
-            echo "<th> fecha </th>";
+            echo "<th> Estado </th>";
+            echo "<th> Fecha </th>";
             echo "</tr>";
             echo "</thead>";
             echo "<tbody>";
             while($row = mysqli_fetch_assoc($result))
             {
-                $name = getNombre($row["id"]);
-                $res = mysqli_fetch_array($name);
+                $res = mysqli_fetch_array($result);
                 echo "<tr>";
-                echo "<td>" . $res[0] . "</td>";
+                echo "<td>" . $row['nombre'] . "</td>";
         
-                echo "<td>" . $row["nestado"] . "</td>";
+                echo "<td>" . $row["Estado"] . "</td>";
         
-                echo "<td>$" . $row["fecha"] . "</td>";
+                echo "<td>" . $row["fecha"] . "</td>";
                 echo "</tr>";
 
             }

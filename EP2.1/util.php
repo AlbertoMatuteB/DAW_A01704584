@@ -3,9 +3,9 @@
     function connectDb()
     {
         $servername = "localhost";
-        $username = "id15254882_albertomatute";
-        $password = "<H+Li/xr=B@9dgj-";
-        $dbname = "id15254882_albertom";
+        $username = "root";
+        $password = "";
+        $dbname = "ep2";
 
         $con = mysqli_connect($servername, $username, $password, $dbname);
 
@@ -38,10 +38,10 @@
         return $result;
     }
 
-    function createZombie($name,$id)
+    function CreateZombie($name)
     {
         $conn = connectDb();
-        $sql = "CALL `createZombie`('$name','$id');";
+        $sql = "CALL `CreateZombie`('$name');";
         $result = mysqli_query($conn, $sql);
 
         closeDb($conn);
@@ -61,7 +61,7 @@
     function getNombre($name)
     {
         $conn = connectDb();
-        $sql = "CALL `getZname` ('$name')";
+        $sql = "CALL `getZombieName` ('$name')";
         $result = mysqli_query($conn, $sql);
         closeDb($conn);
 
@@ -126,8 +126,8 @@
             echo "<thead>";
             echo "<tr>";
             echo "<th> Nombre </th>";
-            echo "<th> estado </th>";
-            echo "<th> fecha </th>";
+            echo "<th> Estado </th>";
+            echo "<th> Fecha </th>";
             echo "</tr>";
             echo "</thead>";
             echo "<tbody>";
@@ -136,11 +136,11 @@
                 $name = getNombre($row["id"]);
                 $res = mysqli_fetch_array($name);
                 echo "<tr>";
-                echo "<td>" . $res[0] . "</td>";
+                echo "<td>" . $res['nombre'] . "</td>";
         
-                echo "<td>" . $row["nestado"] . "</td>";
+                echo "<td>" . $row["estado"] . "</td>";
         
-                echo "<td>$" . $row["fecha"] . "</td>";
+                echo "<td>" . $row["fecha"] . "</td>";
                 echo "</tr>";
 
             }

@@ -12,7 +12,7 @@ $(document).ready(function() {
         $('#tabla').html(response);
     });
 
-    $("#pp").submit(function(event) {
+    $("#estadoZombie").submit(function(event) {
         var request;
 
         event.preventDefault();
@@ -38,7 +38,7 @@ $(document).ready(function() {
         request.done(function(response, textStatus, jqXHR) {
             // Log a message to the console
             console.log(response);
-            $('#pp').each(function() {
+            $('#estadoZombie').each(function() {
                 this.reset();
             });
             $('#total').html(response);
@@ -62,7 +62,7 @@ $(document).ready(function() {
 
     });
 
-    $("#poopoo").submit(function(event) {
+    $("#zombieNuevo").submit(function(event) {
         var request;
 
         event.preventDefault();
@@ -80,7 +80,7 @@ $(document).ready(function() {
         $inputs.prop("disabled", true);
 
         request = $.ajax({
-            url: "createZombie.php",
+            url: "CreateZombie.php",
             type: "post",
             data: serializedData
         });
@@ -88,7 +88,7 @@ $(document).ready(function() {
         request.done(function(response, textStatus, jqXHR) {
             // Log a message to the console
             console.log(response);
-            $('#poopoo').each(function() {
+            $('#zombieNuevo').each(function() {
                 this.reset();
             });
             $('#tabla').html(response);
