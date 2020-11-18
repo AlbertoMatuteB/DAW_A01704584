@@ -1,17 +1,16 @@
 <?php 
     require_once ('util.php');
 
-    $_POST["submit-name1"]=htmlspecialchars($_POST["submit-name1"]);
-    $name = $_POST["submit-name1"];
+    $name = $_POST["zombi"];
 
-    $_POST["submit-estado2"]=htmlspecialchars($_POST["submit-estado2"]);
-    $estado = $_POST["submit-estado2"];
+    $estado = $_POST["estado"];
 
 
-    if(isset($_POST["submit-estado2"]) && !empty($_POST["submit-estado2"]) && isset($_POST["submit-name1"]) && !empty($_POST["submit-name1"]) ){
+    if(isset($_POST["estado"]) && !empty($_POST["estado"]) && isset($_POST["zombi"]) && !empty($_POST["zombi"]) ){
         
-        updateState( $name, $estado);
+        updateState($name, $estado);
+        sleep(1);
         return printZombies();
-        
+
     }
 ?>

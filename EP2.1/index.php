@@ -1,3 +1,6 @@
+<?php
+require_once 'util.php'; 
+?>
 <!DOCTYPE html>
 <html>
 <html lang="es-mx">
@@ -40,7 +43,7 @@
                     <form id="estado Zombies">
                         <div class="row">
                             <h5>Zombies por estado</h5>
-                            <div class="input-field col s5">
+                            <div class="input-field col s6">
                                 <select name="submit-estado" id="estado" type="text" class="validate">
                                     <option value="" disabled selected>seleccione una opcion</option>
                                     <option value="1">infeccion</option>
@@ -68,25 +71,29 @@
                             <input class="btn waves-effect  blue-grey lighten-3" type="submit" name="cargar" value="Ingresar nuevo zombie">
                         </div>
                     </form>
-                    <form id="cbt">
+                    <form id="ActualizaZombie">
                         <div class="row">
                             <h5>Actualiza el estado de un zombie</h5>
-                            <div class="input-field col s5">
-                                <input placeholder="Nombre" id="nombre" type="text" class="validate" data-length="50" name="submit-name1">
-                            </div>
-                            <div class="input-field col s3">
-                                <div class="input-field col s4">
-                                    <select id="estado2" type="text" class="validate" name="submit-estado2">
-                                        <option value="" disabled selected>Choose your option</option>
-                                        <option value="desmayo">desmayo</option>
-                                        <option value="desorientación">desorientación</option>
-                                        <option value="infeccio">infeccion</option>
-                                        <option value="transformacion">transformacion</option>
-                                        <option value="violencia">violencia</option>
-                                    </select>
+                            <div class="input-field col s6">
+                                <div class=" form-group col-md-4">
+                                    <br>
+                                    
+                                    <?= selectionZombie("nombre","id")?>
+                                    
+                                    
                                 </div>
                             </div>
-
+                            <br>
+                            <div class="input-field col s6">
+                                <select name="estado" id="estado" type="text" class="validate">
+                                    <option value="" disabled selected>seleccione una opcion</option>
+                                    <option value="1">infeccion</option>
+                                    <option value="2">desorientación</option>
+                                    <option value="3">violencia</option>
+                                    <option value="4">desmayo</option>
+                                    <option value="5">transformacion</option>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="row">

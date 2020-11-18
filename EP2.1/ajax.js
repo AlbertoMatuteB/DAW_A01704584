@@ -112,7 +112,7 @@ $(document).ready(function() {
 
     });
 
-    $("#cbt").submit(function(event) {
+    $("#ActualizaZombie").submit(function(event) {
         var request;
 
         event.preventDefault();
@@ -138,7 +138,7 @@ $(document).ready(function() {
         request.done(function(response, textStatus, jqXHR) {
             // Log a message to the console
             console.log(response);
-            $('#cbt').each(function() {
+            $('#ActualizaZombie').each(function() {
                 this.reset();
             });
             $('#tabla').html(response);

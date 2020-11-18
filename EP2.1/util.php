@@ -101,12 +101,10 @@
         return $result;
     }
 
-    function updateState( $id, $estado)
+    function updateState( $nombre, $estado)
     {   
-        $name = getID($id);
-        $res = mysqli_fetch_array($name);
         $conn = connectDb();
-        $sql = "CALL `updateState`('$estado','$res[0]')";
+        $sql = "CALL `updateZombi`('$nombre','$estado')";
         $result = mysqli_query($conn, $sql);
         closeDb($conn);
 
@@ -133,13 +131,14 @@
             echo "<tbody>";
             while($row = mysqli_fetch_assoc($result))
             {
-                $res = mysqli_fetch_array($result);
+                $name = getNombre($row["id"]);
+                $res = mysqli_fetch_array($name);
                 echo "<tr>";
-                echo "<td>" . $res['nombre'] . "</td>";
+                echo "<td>" . $res[0] . "</td>";
         
                 echo "<td>" . $row["Estado"] . "</td>";
         
-                echo "<td>" . $row["fecha"] . "</td>";
+                echo "<td>" . $row["Fecha"] . "</td>";
                 echo "</tr>";
 
             }
@@ -150,4 +149,27 @@
         
         }
     }
+
+    function selectionZombie($nombre,$id)
+{
+    $resultado = '<select id="zombi" name="zombi"class=form-control>'; 
+    $resultado .= '<option value="" disabled selected>Selecciona un zombi </option>'; 
+    $conn = connectDb(); 
+
+    $consulta = "CALL OpcionesZombie();";
+    $resultados_consulta = $conn->query($consulta); 
+
+
+    while($row = mysqli_fetch_array($resultados_consulta, MYSQLI_BOTH))
+    {
+        $resultado .= '<option value="'.$row[$id].'">'.$row[$nombre].'</option>'; 
+    }
+
+    mysqli_free_result($resultados_consulta);  //Liberar la memoria
+
+    $resultado .= '</select>'; 
+
+    closeDb($conn); 
+    return $resultado; 
+}
 ?>
