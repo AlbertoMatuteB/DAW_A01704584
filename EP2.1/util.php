@@ -2,11 +2,10 @@
     //Haz una función llamada connectDb la cual validará que la conexión sea correcta.
     function connectDb()
     {
-
-        $servername = 'localhost';
-        $username = "id15254882_albertom";
-        $password = "SQUP7V324zh9Y4l{";
-        $dbname = "id15254882_ep2";
+        $servername = "localhost";
+        $username = "id15254882_albertomatute";
+        $password = "<H+Li/xr=B@9dgj-";
+        $dbname = "id15254882_albertom";
 
         $con = mysqli_connect($servername, $username, $password, $dbname);
 
@@ -39,53 +38,57 @@
         return $result;
     }
 
-    function createZombie($name)
+    function createZombie($name,$id)
     {
         $conn = connectDb();
-        $sql = "CALL `createZombie`($name);";
+        $sql = "CALL `createZombie`('$name','$id');";
         $result = mysqli_query($conn, $sql);
 
         closeDb($conn);
-
-        return $result;
     }
 
     function getZombieNum($estado)
     {
         $conn = connectDb();
-        $sql = "CALL `getZombienum`($estado);";
+        $sql = "CALL `getZombienum`('$estado');";
+        $result = mysqli_query($conn, $sql);
+        
+        closeDb($conn);
+       
+        return  $result;
+    }
+
+    function getNombre($name)
+    {
+        $conn = connectDb();
+        $sql = "CALL `getZname` ('$name')";
         $result = mysqli_query($conn, $sql);
         closeDb($conn);
 
         return $result;
     }
 
-    function getEstadoNum($estado)
+    function getID($name)
     {
         $conn = connectDb();
-        $sql = "CALL `getZombienum`($estado);";
+        $sql = "CALL `getID` ('$name')";
         $result = mysqli_query($conn, $sql);
         closeDb($conn);
 
         return $result;
     }
 
-    function getZombie($estado)
-    {
+    function addZombie($name, $id, $estado)
+    {   
+        
+        createZombie($name,$id);
         $conn = connectDb();
-        $sql = "CALL `getZombienum`($estado);";
+        $sql = "CALL `addState`('$id','$estado');";
         $result = mysqli_query($conn, $sql);
+
         closeDb($conn);
 
-        return $result;
-    }
-
-    function crearZombie($name)
-    {
-        $conn = connectDb();
-        $sql = "CALL `crearZombie`($name);";
-        $result = mysqli_query($conn, $sql);
-        closeDb($conn);
+        return  $result;
     }
 
     function getDateZ()
@@ -98,44 +101,54 @@
         return $result;
     }
 
+    function updateState( $id, $estado)
+    {   
+        $name = getID($id);
+        $res = mysqli_fetch_array($name);
+        $conn = connectDb();
+        $sql = "CALL `updateState`('$estado','$res[0]')";
+        $result = mysqli_query($conn, $sql);
+        closeDb($conn);
+
+        return $result;
+    }
 
     function printZombies(){
-        $sql = "SELECT Z.nombre, E.nombreEstado as 'estado', EZ.fecha FROM zombis Z, estado E, estado_zombi EZ 
-        WHERE Z.id_zombi = EZ.id_zombi and E.id_estado = EZ.id_estado
-        ORDER BY EZ.id_zombi DESC";
+        $result = getDateZ();
 
-        $resp = sqlqry($sql);
-        $totalIn = "SELECT count(id_zombie)
-                    FROM estado_zombie
-                    GROUP BY id_estado";
-        if(!$resp){
-            http_response_code(500);
-            return -1;
+        if(mysqli_num_rows($result) > 0)
+        {
+        
+            echo "<div class='row'>";
+    
+            //output data of each row
+            echo "<table>";
+            echo "<thead>";
+            echo "<tr>";
+            echo "<th> Nombre </th>";
+            echo "<th> estado </th>";
+            echo "<th> fecha </th>";
+            echo "</tr>";
+            echo "</thead>";
+            echo "<tbody>";
+            while($row = mysqli_fetch_assoc($result))
+            {
+                $name = getNombre($row["id"]);
+                $res = mysqli_fetch_array($name);
+                echo "<tr>";
+                echo "<td>" . $res[0] . "</td>";
+        
+                echo "<td>" . $row["nestado"] . "</td>";
+        
+                echo "<td>$" . $row["fecha"] . "</td>";
+                echo "</tr>";
+
+            }
+            echo "</tbody>";
+            echo "</table>";
+            echo "</div>";
+        
+        
         }
-        $tabla = "
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Estado</th>
-                    <th>Fecha</th>
-                </tr>
-            </thead>
-            <tbody>";
-
-        while ($row = mysqli_fetch_array($resp, MYSQLI_BOTH)){
-            $tabla .= "<tr>";
-            $tabla .= "<td>".ucfirst($row['nombre'])."</td>";
-            $tabla .= "<td>".ucfirst($row['estado'])."</td>";
-            $tabla .= "<td>".$row['fecha']."</td>";
-            $tabla .= "</tr>";
-        }    $tabla .= "
-        </tbody>
-        <tfoot>
-            <tr>
-                <th>Incidentes Totales:</th>
-                <th>$totalIn</th>
-            </tr>
-        </tfoot>";
-        return $tabla;
     }
 ?>
