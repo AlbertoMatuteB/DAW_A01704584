@@ -3,9 +3,9 @@
     function connectDb()
     {
         $servername = "localhost";
-        $username = "id15254882_albertomatute";
-        $password = ">BD@5P8-lE&ce}rc";
-        $dbname = "id15254882_ep2";
+        $username = "root";
+        $password = "";
+        $dbname = "ep2";
 
         $con = mysqli_connect($servername, $username, $password, $dbname);
 
@@ -62,16 +62,6 @@
     {
         $conn = connectDb();
         $sql = "CALL `getZombieName` ('$name')";
-        $result = mysqli_query($conn, $sql);
-        closeDb($conn);
-
-        return $result;
-    }
-
-    function getID($name)
-    {
-        $conn = connectDb();
-        $sql = "CALL `getID` ('$name')";
         $result = mysqli_query($conn, $sql);
         closeDb($conn);
 
