@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <title>Lab23</title>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper grey darken-4">
+            <div class="col s6">
+                <img src="nasa.gif" width='200' height='200' class="circle responsive-img">
+            </div>
+            <a href="#nasa.gif" class="brand-logo">nasa</a>
+        </div>
+    </nav>
+    <div class="container">
+        <br><br>
+        <div class="row ">
+            <div class="col s6">
+                <h5>Enter a date to see an astronomical image of that day</h5>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col s6">
+                <div class="row ">
+                    <form id="submit">
+                        <div class="row">
+                            <div class="input-field col s5">
+                                <input id="fecha" type="date" data-length="50" name="fecha">
+                                <label for="fecha">Date</label>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <button class="btn btn-floating pulse  blue darken-4" type="submit" name="submit-fecha"><i class="material-icons">star</i></button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col s6" id="tabla">
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="ajax.js"></script>
+
+</body>
+
+</html>
